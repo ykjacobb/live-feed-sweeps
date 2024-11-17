@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Feed</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Geist', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 10vh; 
+        }
+        .live-feed {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center; 
+        }
+        .live-feed h2 {
+            margin: 0 0 20px;
+            font-size: 17px;
+            color: #333;
+            font-weight: 700;
+        }
+        .live-feed .message-box {
+            border: 2px solid green;
+            border-radius: 8px;
+            padding: 12px;
+            background-color: #f1f9f1;
+            width: 320px; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .live-feed p {
+            font-size: 16px;
+            color: #333;
+            font-weight: 400;
+            line-height: 1.4;
+            margin: 0;
+            text-align: center;
+        }
+        .name {
+            color: green;
+            font-weight: 600;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="live-feed">
+        <h2>Live Feed</h2>
+        <div class="message-box">
+            <p>
+                <span class="time"></span> <span class="name"></span> just claimed her
+                <br /> $750 Walmart Gift Card!
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const names = ["Kayla", "Emma", "Sophia", "Olivia", "Mia", "Ava", "Isabella", "Amelia", "Lily", "Hannah"];
+    const timeElement = document.querySelector('.time');
+    const nameElement = document.querySelector('.name');
+
+    function updateFeed() {
+        const randomName = names[Math.floor(Math.random() * names.length)];
+        
+        const currentTime = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+        timeElement.textContent = `[${currentTime}]`;
+        nameElement.textContent = randomName;
+    }
+
+    updateFeed();
+    setInterval(updateFeed, Math.random() * (10000 - 5000) + 5000);
+</script>
+
+</body>
+</html>
